@@ -97,7 +97,8 @@ class DbBackupCommand extends Command {
         $this->backupProcedure->run(
             $this->option('database'),
             $destinations,
-            $this->option('compression')
+            $this->option('compression'),
+            $this->option('databaseName')
         );
 
         $this->line('');
@@ -220,7 +221,8 @@ class DbBackupCommand extends Command {
      */
     protected function getOptions() {
         return [
-            ['database', null, InputOption::VALUE_OPTIONAL, 'Database configuration name', null],
+            ['database', null, InputOption::VALUE_OPTIONAL, 'Database connection name', null],
+            ['databaseName', null, InputOption::VALUE_OPTIONAL, 'Database name', null],
             ['destination', null, InputOption::VALUE_OPTIONAL, 'Destination configuration name', null],
             ['destinationPath', null, InputOption::VALUE_OPTIONAL, 'File destination path', null],
             ['compression', null, InputOption::VALUE_OPTIONAL, 'Compression type', null],
